@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Mail\MensagemTesteMail;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes(['verify' => true]);

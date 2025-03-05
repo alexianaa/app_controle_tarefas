@@ -21,7 +21,7 @@ class TarefaController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
-        $tarefas = Tarefa::where('user_id',$user_id)->paginate(1);
+        $tarefas = Tarefa::where('user_id',$user_id)->paginate(5);
         //dd($tarefas);
         return view('tarefa.index',['tarefas' => $tarefas]);
     }
@@ -85,6 +85,11 @@ class TarefaController extends Controller
      */
     public function destroy(Tarefa $tarefa)
     {
-        //
+        if(auth()->user()->id != $tarefa->user_id) {
+            return view('acesso-negado');
+        }
+        
+        $tarefa->delete();
+        return redirect()->route('tarefa.index');
     }
 }

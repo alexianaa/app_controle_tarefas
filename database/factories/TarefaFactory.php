@@ -17,9 +17,9 @@ class TarefaFactory extends Factory
     public function definition(): array
     {
         return [
-            'tarefa' => fake()->realText( 200,  2),
+            'tarefa' => fake()->realText( 100,  2),
             'data_limite_conclusao' => fake()->dateTimeBetween('-1 week', '+1 week'),
-            'user_id' => fake()->numberBetween(0,2),
+            'user_id' => fake()->numberBetween(0,9),
         ];
     }
 }

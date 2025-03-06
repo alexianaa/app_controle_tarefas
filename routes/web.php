@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Mail\MensagemTesteMail;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return redirect()->route('login');

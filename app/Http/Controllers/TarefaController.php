@@ -6,7 +6,10 @@ use Mail;
 use App\Mail\NovaTarefaMail;
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\PDF;
+
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\TarefasExport;
 
 class TarefaController extends Controller
 {
@@ -42,7 +45,7 @@ class TarefaController extends Controller
         $dados = $request->all();
         $dados['user_id'] = auth()->user()->id;
         $tarefa = Tarefa::create($dados);
-        // Mail::to(auth()->user()->email)->send(new NovaTarefaMail($tarefa));
+        Mail::to(auth()->user()->email)->send(new NovaTarefaMail($tarefa));
 
         return redirect()->route('tarefa.show', ['tarefa' => $tarefa->id]);
     }
@@ -91,5 +94,26 @@ class TarefaController extends Controller
         
         $tarefa->delete();
         return redirect()->route('tarefa.index');
+    }
+
+    public function exportacao($extensao)
+    {
+        if(in_array($extensao, ['xlsx','csv','pdf'])){
+            return Excel::download(new TarefasExport, "lista-de-tarefas.$extensao");
+        }else{
+            return redirect()->route('tarefa.index');
+        }
+        
+    }
+
+    public function exportar()
+    {
+        $tarefas = auth()->user()->tarefas()->get();
+
+        $pdf = PDF::loadView('tarefa.pdf', ['tarefas' => $tarefas]);
+
+        $pdf->setPaper('a4','landscape');
+
+        return $pdf->stream('tarefas.pdf');
     }
 }

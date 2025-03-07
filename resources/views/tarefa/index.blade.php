@@ -6,7 +6,14 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header" style="display: flex; justify-content: space-between;">
-              Tarefas <a href="{{ route('tarefa.create') }}">Novo</a>
+              Tarefas 
+              <div>
+                <a href="{{ route('tarefa.create') }}">Novo</a>
+                <a href="{{ route('tarefa.exportacao', ['extensao' => 'xlsx']) }}" style="margin-left: 10px;">XLSX</a>
+                <a href="{{ route('tarefa.exportacao', ['extensao' => 'csv']) }}" style="margin-left: 10px;">CSV</a>
+                <a href="{{ route('tarefa.exportacao', ['extensao' => 'pdf']) }}" style="margin-left: 10px;">PDF</a>
+                <a href="{{ route('tarefa.exportar') }}" target="_blank" style="margin-left: 10px;">PDF v2</a>
+              </div>
             </div>
 
                 <div class="card-body">
@@ -45,7 +52,7 @@
                       <li class="page-item"><a class="page-link" href="{{ $tarefas->previousPageUrl() }}">Voltar</a></li>
 
                       @for($i = 1; $i <= $tarefas->lastPage(); $i++)
-                        <li class="page-item {{ $tarefas->currentPage() == $i ?? 'active' }}">
+                        <li class="page-item {{ $tarefas->currentPage() == $i ? 'active' : '' }}">
                           <a class="page-link" href="{{ $tarefas->url($i) }}">{{ $i }}</a>
                         </li>
                       @endfor

@@ -19,7 +19,7 @@ class TarefaFactory extends Factory
         return [
             'tarefa' => fake()->realText( 100,  2),
             'data_limite_conclusao' => fake()->dateTimeBetween('-1 week', '+1 week'),
-            'user_id' => fake()->numberBetween(0,9),
+            'user_id' => fake()->numberBetween(1,4),
         ];
     }
 }

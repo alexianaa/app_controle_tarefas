@@ -1,5 +1,7 @@
 # Controle de tarefas
 
+![imagem tela inicial](./app.png)
+
 Para rodar o projeto:
 
 1. npm install

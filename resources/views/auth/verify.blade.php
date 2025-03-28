@@ -18,7 +18,7 @@
                     Caso você não tenha recebido o email de verificação clique no link a seguir para receber um novo email,
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Clique aqui para reevniar o link</button>.
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Clique aqui para reenviar o link</button>.
                     </form>
                 </div>
             </div>

@@ -4,6 +4,8 @@
 
 Para rodar o projeto:
 
+npm 20^
+
 1. npm install
 2. npm run dev
 3. em outro terminal rodar php artisan serve

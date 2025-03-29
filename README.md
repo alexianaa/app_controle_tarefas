@@ -1,5 +1,7 @@
 # Controle de tarefas
 
+![video demo](./demo_app_controle_tarefas.mp4)
+
 ![imagem tela inicial](./app.png)
 
 Para rodar o projeto:

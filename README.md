@@ -1,6 +1,6 @@
 # Controle de tarefas
 
-![video demo](./demo_app_controle_tarefas.mp4)
+[Baixe o vídeo demonstrativo!](./demo_app_controle_tarefas.mp4)
 
 ![imagem tela inicial](./app.png)
 
